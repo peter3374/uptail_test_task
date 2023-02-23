@@ -7,6 +7,7 @@ import 'package:test_task/logic/blocs/network_connection/internet_cubit.dart';
 import 'package:test_task/logic/blocs/qr/qr_bloc.dart';
 import 'package:test_task/logic/blocs/user/user_bloc.dart';
 import 'package:test_task/logic/services/network_service.dart';
+import 'package:test_task/presenatation/auth_screen/auth_screen.dart';
 import 'package:test_task/presenatation/qr_screen/qr_screen.dart';
 
 void main() {
@@ -44,7 +45,7 @@ class MainApp extends StatelessWidget {
           useMaterial3: true,
           colorSchemeSeed: Colors.green,
         ),
-        home: const QrScreen(),
+        home: const AuthScreen(),
       ),
     );
   }
