@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
@@ -14,14 +12,12 @@ class QrBloc extends Bloc<QrEvent, QrState> {
   QrBloc() : super(QrInitialState()) {
     on<QrEvent>((event, emit) async {
       if (event is QrScanEvent) {
-        log('QrScanEvent');
         emit(QrScanningState());
-        log('QrScanningState');
-        final isScanned = await _scanQR();
-        log('isScanned $isScanned');
-        if (isScanned) {
+
+        final isScannedQR = await _scanQR();
+
+        if (isScannedQR) {
           emit(QrScannedState());
-          log('QrScannedState');
         }
       }
     });
