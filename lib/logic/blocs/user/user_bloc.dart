@@ -2,13 +2,13 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:test_task/data/models/user.dart';
-import 'package:test_task/data/repository/user_data_repository.dart';
+import 'package:test_task/domain/entities/user_entity.dart';
+import 'package:test_task/domain/repository/user_data_repository.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
 
-class UserBloc extends Bloc<UserEvent, UserState>   {
+class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository _userRepository;
 
   UserBloc(
@@ -28,5 +28,6 @@ class UserBloc extends Bloc<UserEvent, UserState>   {
     });
   }
 
-  Future<List<User>> _fetchUsers() async => await _userRepository.fetchUsers();
+  Future<List<UserEntity>> _fetchUsers() async =>
+      await _userRepository.fetchUsers();
 }

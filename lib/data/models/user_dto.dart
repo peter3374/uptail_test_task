@@ -1,38 +1,30 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:test_task/data/scheme/user_scheme.dart';
+import 'package:test_task/domain/entities/user_entity.dart';
 
-class User {
+class UserDTO {
   final int id;
   final String name;
   final String username;
   final String email;
 
-  User({
+  UserDTO({
     required this.id,
     required this.name,
     required this.username,
     required this.email,
   });
 
-  User copyWith({
-    int? id,
-    String? name,
-    String? username,
-    String? email,
-  }) {
-    return User(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      username: username ?? this.username,
-      email: email ?? this.email,
-    );
-  }
-
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserDTO.fromJson(Map<String, dynamic> json) => UserDTO(
         id: json[UserScheme.id],
         name: json[UserScheme.name],
         username: json[UserScheme.username],
         email: json[UserScheme.email],
+      );
+
+  UserEntity toEntity() => UserEntity(
+        id: id,
+        name: name,
+        username: username,
+        email: email,
       );
 }

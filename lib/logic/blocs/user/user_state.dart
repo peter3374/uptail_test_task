@@ -12,7 +12,7 @@ class UserInitialState extends UserState {}
 class UsersLoadState extends UserState {}
 
 class UsersLoadedState extends UserState {
-  final List<User> users;
+  final List<UserEntity> users;
 
   const UsersLoadedState({required this.users});
   @override

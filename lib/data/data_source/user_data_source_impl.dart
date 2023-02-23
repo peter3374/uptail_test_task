@@ -1,5 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:test_task/data/data_source/user_data_source.dart';
+import 'package:test_task/data/models/user_dto.dart';
 import 'package:test_task/logic/services/error_service.dart';
 import 'package:test_task/logic/services/network_service.dart';
 
@@ -12,12 +12,18 @@ class UserDataSourceImpl implements UserDataSource {
   }) : _networkSource = networkSource;
 
   @override
-  Future<List<dynamic>> fetchUsers() async {
+  Future<List<UserDTO>> fetchUsers() async {
+    List<UserDTO> users = [];
     try {
       final responce = await _networkSource.get(path: _usersUrl);
-      return responce.data as List<dynamic>;
+      final rawUsers = responce.data as List<dynamic>;
+
+      for (int i = 0; i < rawUsers.length; i++) {
+        users.add(UserDTO.fromJson(rawUsers[i]));
+      }
     } catch (e) {
       throw Failure('Ошибка!');
     }
+    return [];
   }
 }
