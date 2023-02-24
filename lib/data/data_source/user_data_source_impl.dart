@@ -21,9 +21,9 @@ class UserDataSourceImpl implements UserDataSource {
       for (int i = 0; i < rawUsers.length; i++) {
         users.add(UserDTO.fromJson(rawUsers[i]));
       }
+      return users;
     } catch (e) {
       throw Failure('Ошибка!');
     }
-    return [];
   }
 }

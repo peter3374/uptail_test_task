@@ -13,6 +13,7 @@ class UserRepositoryImpl implements UserRepository {
     final rawUsers = await _userDataSource.fetchUsers();
 
     final entities = rawUsers.map((user) => user.toEntity()).toList();
+
     return entities;
   }
 }
